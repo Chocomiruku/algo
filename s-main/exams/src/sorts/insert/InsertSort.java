@@ -5,21 +5,28 @@ import static sorts.Utils.printArray;
 public class InsertSort {
     // Сложность O(n^2)
 
-    public static void insertSort(int arr[])
-    {
-        int n = arr.length;
-        for (int i = 1; i < n; ++i) {
-            int key = arr[i];
+    public static void insertSort(int[] array) {
+        // Количество элементов в массиве
+        int arrayLength = array.length;
+
+        // Внешний цикл идет от второго элемента (индекс 1) до конца массива
+        for (int i = 1; i < arrayLength; i++) {
+            // Запоминаем текущий элемент
+            int key = array[i];
+
+            // Индекс предыдущего элемента
             int j = i - 1;
 
-            /* Move elements of arr[0..i-1], that are
-               greater than key, to one position ahead
-               of their current position */
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j = j - 1;
+            // Внутренний цикл идет от текущего элемента в обратном порядке
+            // до тех пор, пока не найдет элемент меньше ключа или не достигнет начала массива
+            while (j >= 0 && array[j] > key) {
+                // Сдвигаем элементы больше ключа вправо на одну позицию
+                array[j + 1] = array[j];
+                j--;
             }
-            arr[j + 1] = key;
+
+            // Вставляем ключевой элемент на правильное место
+            array[j + 1] = key;
         }
     }
 
